@@ -1,13 +1,21 @@
-- name: KICS Github Action
-  uses: Checkmarx/kics-github-action@v1.7.0
-  with:
-    # path to file or directory to scan
-    path:
-    # file path to store result in json format
-    output_path: # optional
-    # file path to store source internal representation in JSON format
-    payload_path: # optional
-    # path to directory with queries (default "./assets/queries")
-    queries: # optional
-    # verbose scan
-    verbose: # optional
+---
+name: kics
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  kics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Check out source code
+
+      - name: run a KICS scan
+        uses: checkmarx/kics-github-action@3545b741daf8fc816b081261995184aa12a247c0
+        with:
+          path: .
+          token: ${{ secrets.GITHUB_TOKEN }}
+          output_path: myResults/
