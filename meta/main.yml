@@ -1,0 +1,10 @@
+galaxy_info:
+  author: Sergey Malyuk
+  description: your role description
+  company: genlab
+  license: BSD
+  min_ansible_version: 2.1
+  galaxy_tags: []
+  namespace: genlab
+  role_name: "my_role"
+dependencies: []
